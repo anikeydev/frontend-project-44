@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/anikeydev/frontend-project-44#readme",
   "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "readline-sync": "^1.4.10"
   }
 }
