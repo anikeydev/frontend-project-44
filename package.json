@@ -2,6 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "brain games",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +18,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/anikeydev/frontend-project-44/issues"
+  },
+  "bin": {
+    "brain-games": "bin/brain-games.js"
   },
   "homepage": "https://github.com/anikeydev/frontend-project-44#readme"
 }
