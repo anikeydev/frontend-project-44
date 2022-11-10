@@ -1,14 +1,12 @@
 import readlineSync from 'readline-sync'
 
 const cli = {
-    hello() {
-        console.log('Welcome to the Brain Games!')
+    getName() {
+        return readlineSync.question('May I have your name? ')
     },
-    greetingByName() {
-        const name = readlineSync.question('May I have your name? ')
-        console.log(`Hello, ${name}`)
-        return name
-    },
+    getAnswer() {
+        return readlineSync.question('Your answer: ')
+    }
 }
 
 export { cli }

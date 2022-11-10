@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import { cli } from '../src/cli.js'
+import { game } from '../src/index.js'
 
-cli.hello()
-cli.greetingByName()
+game.welcomeInGame()
+const name = cli.getName()
+game.greetingByName(name)
