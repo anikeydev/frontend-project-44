@@ -2,8 +2,10 @@ import readlineSync from 'readline-sync'
 import { randomNum } from './utils.js'
 
 const evenGame = (name) => {
-    let countGame = 3
+    const countQuestions = 3
+    
     let result = 0
+    let isLose = false
 
     console.log('Answer "yes" if the number is even, otherwise answer "no"')
 
@@ -15,38 +17,37 @@ const evenGame = (name) => {
         if (answer === 'yes') {
             if (random % 2 === 0) {
                 console.log('Correct!')
-                countGame -= 1
                 result += 1
-                if (result === 3) {
+                if (result === countQuestions) {
                     console.log(`Congratulations, ${name}`)
+                    isLose = true
                 }
             } else {
                 console.log(`"${answer}" is wrong answer ;(. Correct answer was "no"\nLet's try again, ${name}!`)
-                countGame = 0
+                isLose = true
             }
         } else if (answer === 'no') {
             if (random % 2 !== 0) {
                 console.log('Correct!')
-                countGame -= 1
                 result += 1
-                if (result === 3) {
+                if (result === countQuestions) {
                     console.log(`Congratulations, ${name}`)
+                    isLose = true
                 }
             } else {
                 console.log(`"${answer}" is wrong answer ;(. Correct answer was "yes"\nLet's try again, ${name}!`)
-                countGame = 0           
+                isLose = true          
             }
         } else {
             console.log(`I don know is "${answer}"\nLet's try again, ${name}!`)
-            countGame = 0
+            isLose = true
         }
 
     }
 
-    while (countGame > 0) {
+    while (isLose === false) {
         ask()
     }
-
 }
 
 export { evenGame }
