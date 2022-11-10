@@ -19,7 +19,7 @@ const evenGame = (name) => {
                 console.log('Correct!')
                 result += 1
                 if (result === countQuestions) {
-                    console.log(`Congratulations, ${name}`)
+                    console.log(`Congratulations, ${name}!`)
                     isLose = true
                 }
             } else {
@@ -31,7 +31,7 @@ const evenGame = (name) => {
                 console.log('Correct!')
                 result += 1
                 if (result === countQuestions) {
-                    console.log(`Congratulations, ${name}`)
+                    console.log(`Congratulations, ${name}!`)
                     isLose = true
                 }
             } else {
