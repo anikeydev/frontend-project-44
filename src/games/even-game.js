@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync'
-import { randomNum } from './utils.js'
+import { randomNum } from '../utils.js'
 
 const evenGame = (name) => {
     const countQuestions = 3

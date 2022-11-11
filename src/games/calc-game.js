@@ -1,10 +1,11 @@
-import { cli } from './cli.js'
-import { game } from './index.js'
-import { randomNum, randomOper } from './utils.js'
+import { cli } from '../cli.js'
+import { game } from '../index.js'
+import { randomNum, randomOper } from '../utils.js'
 
 const calcGame = (countRound) => {
     let isGame = true
     let result = 0
+    const ball = 1
 
     game.welcomeInGame()
     const name = cli.getName()
@@ -43,7 +44,7 @@ const calcGame = (countRound) => {
         const userAnswer = cli.getAnswer()
         if (isCheck(answer, userAnswer) === true) {
             game.trueAnswerText()
-            result += 1
+            result += ball
         } else if (isCheck(answer, userAnswer) === false) {
             game.loseAnswerText(name, answer, userAnswer)
             isGame = false
