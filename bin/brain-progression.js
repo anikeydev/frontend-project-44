@@ -2,4 +2,4 @@
 
 import { progGame } from '../src/games/progression-game.js'
 
-progGame(1)
+progGame(3)

@@ -11,3 +11,12 @@ export const randomOper = () => {
 
     return arrayOperation[randomNumByMax(arrayOperation.length)]
 }
+
+export const randomNumByMinMax = (min, max) => {
+    const num = Math.floor((Math.random() * max) + min)
+    if (num <= max) {
+        return num
+    } else {
+        return randomNumByMinMax(min, max)
+    }
+}
