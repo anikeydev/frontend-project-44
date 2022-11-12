@@ -16,4 +16,4 @@ https://asciinema.org/a/8sUJr8emLTCiWvZRwoBt4Iagr
 
 # Brain-progression
 
- https://asciinema.org/a/BtfwGYU1BnL92HUJ3DJplBRcF
+https://asciinema.org/a/QzLASNsWnimbkO7iMWkppIlcd
