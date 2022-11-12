@@ -1,53 +1,52 @@
-import readlineSync from 'readline-sync'
-import { randomNum } from '../utils.js'
+import readlineSync from 'readline-sync';
+import { randomNum } from '../utils.js';
 
 const evenGame = (name) => {
-    const countQuestions = 3
-    
-    let result = 0
-    let isLose = false
+  const countQuestions = 3;
 
-    console.log('Answer "yes" if the number is even, otherwise answer "no"')
+  let result = 0;
+  let isLose = false;
 
-    const ask = () => {
-        let random = randomNum()
-        console.log(`Question: ${random}`)
-        const answer = readlineSync.question('Your answer: ')
+  console.log('Answer "yes" if the number is even, otherwise answer "no"');
 
-        if (answer === 'yes') {
-            if (random % 2 === 0) {
-                console.log('Correct!')
-                result += 1
-                if (result === countQuestions) {
-                    console.log(`Congratulations, ${name}!`)
-                    isLose = true
-                }
-            } else {
-                console.log(`"${answer}" is wrong answer ;(. Correct answer was "no"\nLet's try again, ${name}!`)
-                isLose = true
-            }
-        } else if (answer === 'no') {
-            if (random % 2 !== 0) {
-                console.log('Correct!')
-                result += 1
-                if (result === countQuestions) {
-                    console.log(`Congratulations, ${name}!`)
-                    isLose = true
-                }
-            } else {
-                console.log(`"${answer}" is wrong answer ;(. Correct answer was "yes"\nLet's try again, ${name}!`)
-                isLose = true          
-            }
-        } else {
-            console.log(`I don know is "${answer}"\nLet's try again, ${name}!`)
-            isLose = true
+  const ask = () => {
+    const random = randomNum();
+    console.log(`Question: ${random}`);
+    const answer = readlineSync.question('Your answer: ');
+
+    if (answer === 'yes') {
+      if (random % 2 === 0) {
+        console.log('Correct!');
+        result += 1;
+        if (result === countQuestions) {
+          console.log(`Congratulations, ${name}!`);
+          isLose = true;
         }
-
+      } else {
+        console.log(`"${answer}" is wrong answer ;(. Correct answer was "no"\nLet's try again, ${name}!`);
+        isLose = true;
+      }
+    } else if (answer === 'no') {
+      if (random % 2 !== 0) {
+        console.log('Correct!');
+        result += 1;
+        if (result === countQuestions) {
+          console.log(`Congratulations, ${name}!`);
+          isLose = true;
+        }
+      } else {
+        console.log(`"${answer}" is wrong answer ;(. Correct answer was "yes"\nLet's try again, ${name}!`);
+        isLose = true;
+      }
+    } else {
+      console.log(`I don know is "${answer}"\nLet's try again, ${name}!`);
+      isLose = true;
     }
+  };
 
-    while (isLose === false) {
-        ask()
-    }
-}
+  while (isLose === false) {
+    ask();
+  }
+};
 
-export { evenGame }
+export { evenGame };
