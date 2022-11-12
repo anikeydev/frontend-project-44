@@ -22,10 +22,7 @@ const calcGame = (countRound) => {
     }
 
     function isCheck(answer, userAnswer) {
-        if (typeof userAnswer === 'string') {
-            return 'string'
-        }
-        if (answer === eval(userAnswer)) {
+        if (answer === userAnswer) {
             return true
         } else {
             return false
@@ -40,8 +37,8 @@ const calcGame = (countRound) => {
         }
         const question = generateQuestion()
         game.askQuestion(question)
-        const answer = eval(question)
-        const userAnswer = cli.getAnswer()
+        const answer = eval(question).toString()
+        const userAnswer = cli.getAnswer().toString()
         if (isCheck(answer, userAnswer) === true) {
             game.trueAnswerText()
             result += ball
