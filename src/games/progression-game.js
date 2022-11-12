@@ -68,14 +68,15 @@ const progGame = (countRound) => {
         for (let i = 0; i <= maxCount; i++) {
             resultArr.push(resultArr[i] + step)
         }
-
+        
+        const answer = resultArr[position]
         resultArr[position] = '..'
 
         resultStr = resultArr.join(' ')
 
         return {
             progress: resultStr,
-            answer: step
+            answer
         }
     }
 }
