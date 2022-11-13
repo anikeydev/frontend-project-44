@@ -1,5 +1,5 @@
-import { game } from '../index.js';
-import { cli } from '../cli.js';
+import game from '../index.js';
+import cli from '../cli.js';
 import { randomNum } from '../utils.js';
 
 const primeGame = (countRound) => {
@@ -12,28 +12,23 @@ const primeGame = (countRound) => {
 
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-  while (isGame) {
-    ask();
-  }
-
-  function ask() {
-    if (result === countRound) {
-      game.winText(name);
-      isGame = false;
-      return;
+  function isPrime(n) {
+    if (n < 2) {
+      return false;
+    } if (n === 2) {
+      return true;
     }
-    const question = randomNum();
-    game.askQuestion(question);
 
-    const userAnswer = cli.getAnswer();
-
-    if (isCheck(question, userAnswer)) {
-      game.trueAnswerText();
-      result += 1;
-    } else {
-      game.loseAnswerText(name, getAnswer(question), userAnswer);
-      isGame = false;
+    let i = 2;
+    const limit = Math.sqrt(n);
+    while (i <= limit) {
+      if (n % i === 0) {
+        return false;
+      }
+      i += 1;
     }
+
+    return true;
   }
 
   function getAnswer(question) {
@@ -56,24 +51,25 @@ const primeGame = (countRound) => {
     return false;
   }
 
-  function isPrime(n) {
-    if (n < 2) {
-      return false;
-    } if (n === 2) {
-      return true;
+  while (isGame) {
+    if (result === countRound) {
+      game.winText(name);
+      isGame = false;
+      return;
     }
+    const question = randomNum();
+    game.askQuestion(question);
 
-    let i = 2;
-    const limit = Math.sqrt(n);
-    while (i <= limit) {
-      if (n % i === 0) {
-        return false;
-      }
-      i += 1;
+    const userAnswer = cli.getAnswer();
+
+    if (isCheck(question, userAnswer)) {
+      game.trueAnswerText();
+      result += 1;
+    } else {
+      game.loseAnswerText(name, getAnswer(question), userAnswer);
+      isGame = false;
     }
-
-    return true;
   }
 };
 
-export { primeGame };
+export default primeGame;

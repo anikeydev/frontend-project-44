@@ -1,4 +1,4 @@
-import { cli } from '../cli.js';
+import cli from '../cli.js';
 import { game } from '../index.js';
 import { randomNum, randomOper } from '../utils.js';
 
@@ -13,12 +13,31 @@ const calcGame = (countRound) => {
 
   console.log('What is the result of the expression?');
 
-  while (isGame) {
-    ask();
-  }
-
   function generateQuestion() {
-    return `${randomNum()} ${randomOper()} ${randomNum()}`;
+    const num1 = randomNum();
+    const num2 = randomNum();
+    const oper = randomOper();
+    const string = `${num1} ${oper} ${num2}`;
+
+    switch (oper) {
+      case '+':
+        return {
+          string,
+          result: num1 + num2,
+        };
+      case '*':
+        return {
+          string,
+          result: num1 * num2,
+        };
+      case '-':
+        return {
+          string,
+          result: num1 - num2,
+        };
+      default:
+        return 0;
+    }
   }
 
   function isCheck(answer, userAnswer) {
@@ -28,15 +47,15 @@ const calcGame = (countRound) => {
     return false;
   }
 
-  function ask() {
+  while (isGame) {
     if (result === countRound) {
       game.winText(name);
       isGame = false;
       return;
     }
     const question = generateQuestion();
-    game.askQuestion(question);
-    const answer = eval(question).toString();
+    game.askQuestion(question.string);
+    const answer = question.result.toString();
     const userAnswer = cli.getAnswer().toString();
     if (isCheck(answer, userAnswer) === true) {
       game.trueAnswerText();
@@ -51,4 +70,4 @@ const calcGame = (countRound) => {
   }
 };
 
-export { calcGame };
+export default calcGame;

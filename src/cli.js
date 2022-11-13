@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable import/no-unresolved */
 import readlineSync from 'readline-sync';
 
 const cli = {
@@ -12,4 +9,4 @@ const cli = {
   },
 };
 
-export { cli };
+export default cli;

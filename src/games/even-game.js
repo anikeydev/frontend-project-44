@@ -49,4 +49,4 @@ const evenGame = (name) => {
   }
 };
 
-export { evenGame };
+export default evenGame;

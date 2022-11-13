@@ -1,5 +1,5 @@
-import { game } from '../index.js';
-import { cli } from '../cli.js';
+import game from '../index.js';
+import cli from '../cli.js';
 import { randomNum } from '../utils.js';
 
 const gcdGame = (countRound) => {
@@ -12,29 +12,6 @@ const gcdGame = (countRound) => {
   game.greetingByName(name);
 
   console.log('Find the greatest common divisor of given numbers.');
-
-  while (isGame) {
-    ask();
-  }
-
-  function ask() {
-    if (result === countRound) {
-      game.winText(name);
-      isGame = false;
-      return;
-    }
-    const question = generateQustion();
-    game.askQuestion(question);
-    const answer = getAnswer(question);
-    const userAnswer = cli.getAnswer();
-    if (isCheck(answer, userAnswer)) {
-      game.trueAnswerText();
-      result += ball;
-    } else {
-      game.loseAnswerText(name, answer, userAnswer);
-      isGame = false;
-    }
-  }
 
   function generateQustion() {
     return `${randomNum()} ${randomNum()}`;
@@ -60,6 +37,25 @@ const gcdGame = (countRound) => {
     }
     return false;
   }
+
+  while (isGame) {
+    if (result === countRound) {
+      game.winText(name);
+      isGame = false;
+      return;
+    }
+    const question = generateQustion();
+    game.askQuestion(question);
+    const answer = getAnswer(question);
+    const userAnswer = cli.getAnswer();
+    if (isCheck(answer, userAnswer)) {
+      game.trueAnswerText();
+      result += ball;
+    } else {
+      game.loseAnswerText(name, answer, userAnswer);
+      isGame = false;
+    }
+  }
 };
 
-export { gcdGame };
+export default gcdGame;

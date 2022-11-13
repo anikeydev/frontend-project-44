@@ -30,4 +30,4 @@ const game = {
 
 };
 
-export { game };
+export default game;

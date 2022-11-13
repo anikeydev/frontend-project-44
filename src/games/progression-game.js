@@ -1,6 +1,6 @@
-import { cli } from '../cli.js';
-import { game } from '../index.js';
-import { randomNumByMinMax, randomNum, randomNumByMax } from '../utils.js';
+import cli from '../cli.js';
+import game from '../index.js';
+import { randomNumByMinMax, randomNumByMax } from '../utils.js';
 
 const progGame = (countRound) => {
   let isGame = true;
@@ -13,11 +13,47 @@ const progGame = (countRound) => {
 
   console.log('What number is missing in the progression?');
 
-  while (isGame) {
-    ask();
+  function isCheck(answer, userAnswer) {
+    if (answer.toString() === userAnswer.toString()) {
+      return true;
+    }
+    return false;
   }
 
-  function ask() {
+  function randomStep(max) {
+    const step = randomNumByMax(max);
+    if (step === 0) {
+      return randomStep(max);
+    }
+    return step;
+  }
+
+  function generateProgress(minCount = 5, maxCount = 10) {
+    const resultArr = [];
+    let resultStr = '';
+    const count = randomNumByMinMax(minCount, maxCount);
+    const step = randomStep(maxCount);
+    const position = randomNumByMax(maxCount);
+    const startnum = 0;
+
+    resultArr.push(startnum);
+
+    for (let i = 0; i <= count; i += 1) {
+      resultArr.push(resultArr[i] + step);
+    }
+
+    const answer = resultArr[position];
+    resultArr[position] = '..';
+
+    resultStr = resultArr.join(' ');
+
+    return {
+      progress: resultStr,
+      answer,
+    };
+  }
+
+  while (isGame) {
     if (result === countRound) {
       game.winText(name);
       isGame = false;
@@ -36,46 +72,6 @@ const progGame = (countRound) => {
       isGame = false;
     }
   }
-
-  function isCheck(answer, userAnswer) {
-    if (answer.toString() === userAnswer.toString()) {
-      return true;
-    }
-    return false;
-  }
-
-  function randomStep(max) {
-    const step = randomNumByMax(max);
-    if (step === 0) {
-      return randomStep(max);
-    }
-    return step;
-  }
-
-  function generateProgress(minCount = 5, maxCount = 10, step = 1) {
-    const resultArr = [];
-    let resultStr = '';
-    const count = randomNumByMinMax(minCount, maxCount);
-    step = randomStep(maxCount);
-    const position = randomNumByMax(maxCount);
-    const startnum = 0;
-
-    resultArr.push(startnum);
-
-    for (let i = 0; i <= maxCount; i++) {
-      resultArr.push(resultArr[i] + step);
-    }
-
-    const answer = resultArr[position];
-    resultArr[position] = '..';
-
-    resultStr = resultArr.join(' ');
-
-    return {
-      progress: resultStr,
-      answer,
-    };
-  }
 };
 
-export { progGame };
+export default progGame;
