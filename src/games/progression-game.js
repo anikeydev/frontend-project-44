@@ -14,7 +14,7 @@ const progGame = (countRound) => {
   console.log('What number is missing in the progression?');
 
   function isCheck(answer, userAnswer) {
-    if (answer) {
+    if (answer || answer === 0) {
       if (answer.toString() === userAnswer.toString()) {
         return true;
       }
@@ -36,12 +36,12 @@ const progGame = (countRound) => {
     let resultStr = '';
     const count = randomNumByMinMax(minCount, maxCount);
     const step = randomStep(maxCount);
-    const position = randomNumByMax(maxCount);
+    const position = randomNumByMax(count);
     const startnum = 0;
 
     resultArr.push(startnum);
 
-    for (let i = 0; i <= count; i += 1) {
+    for (let i = 0; i < count; i += 1) {
       resultArr.push(resultArr[i] + step);
     }
 
