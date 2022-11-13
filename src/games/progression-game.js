@@ -14,8 +14,11 @@ const progGame = (countRound) => {
   console.log('What number is missing in the progression?');
 
   function isCheck(answer, userAnswer) {
-    if (answer.toString() === userAnswer.toString()) {
-      return true;
+    if (answer) {
+      if (answer.toString() === userAnswer.toString()) {
+        return true;
+      }
+      return false;
     }
     return false;
   }
