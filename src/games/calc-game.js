@@ -1,5 +1,5 @@
 import cli from '../cli.js';
-import { game } from '../index.js';
+import game from '../index.js';
 import { randomNum, randomOper } from '../utils.js';
 
 const calcGame = (countRound) => {
